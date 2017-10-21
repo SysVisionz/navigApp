@@ -12,10 +12,6 @@ export default class App extends React.Component {
   componentWillMount() {
   firebase.initializeApp(config);
   firebase.auth().onAuthStateChanged( function (user) {
-    if (user)
-      console.log(user);
-    else
-      console.log("Nothin'");
 })};
 
   render() {
