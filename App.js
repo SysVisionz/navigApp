@@ -6,17 +6,10 @@ import combineReducers from './reducers';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import Router from './Router';
+import config from './config.json';
 
 export default class App extends React.Component {
   componentWillMount() {
-    const config = {
-    apiKey: 'AIzaSyB4NZxofyQlF17ufpg1JThdE9NF4_PU0ww',
-    authDomain: 'navigapp-f499f.firebaseapp.com',
-    databaseURL: 'https://navigapp-f499f.firebaseio.com',
-    projectId: 'navigapp-f499f',
-    storageBucket: 'navigapp-f499f.appspot.com',
-    messagingSenderId: '1026647574507'
-  };
   firebase.initializeApp(config);
   firebase.auth().onAuthStateChanged( function (user) {
     if (user)
