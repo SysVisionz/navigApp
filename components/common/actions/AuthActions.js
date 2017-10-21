@@ -29,11 +29,14 @@ export const keepLoginChanged = (value) => {
 	};
 };
 
-export const loginUser = ( email, password ) => {
+export const loginUser = ( email, password, keepLogin ) => {
 	return (dispatch) => {
 		dispatch({type: LOGIN_USER});
+		if (keepLogin)
+			var loginFunc = firebase.auth().signInWith
+		else
+			var loginFunc = firebase.auth().signInWithEmailAndPassword(email, password);
 
-		firebase.auth().signInWithEmailAndPassword(email, password)
 		.then(user => loginUserSuccess(dispatch, user))
 		.catch(() => {
 			firebase.auth().createUserWithEmailAndPassword(email, password)
